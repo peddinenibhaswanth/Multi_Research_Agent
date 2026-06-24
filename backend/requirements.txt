@@ -14,3 +14,4 @@ pydantic
 python-dotenv
 lxml
 nest_asyncio
+sentence-transformers
