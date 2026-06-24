@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+langchain==0.3.25
+langchain-huggingface==0.3.1
+langchain-google-genai==2.1.5
+langchain-groq==0.3.2
+langchain-community==0.3.25
+langchain-chroma==0.2.4
+chromadb
+ddgs
+beautifulsoup4
+requests
+pydantic
+python-dotenv
+lxml
+nest_asyncio
