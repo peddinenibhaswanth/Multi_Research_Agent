@@ -6,6 +6,7 @@ import uuid
 import re
 import nest_asyncio
 import traceback
+import os
 
 # Apply the patch to allow nested asyncio event loops
 nest_asyncio.apply()
@@ -109,4 +110,5 @@ if __name__ == "__main__":
     """
     Main entry point to run the FastAPI application using uvicorn.
     """
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
