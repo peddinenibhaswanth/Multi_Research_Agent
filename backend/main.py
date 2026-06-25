@@ -27,6 +27,8 @@ app = FastAPI(
 origins = [
     "http://localhost:5173",  # Default Vite dev server
     "http://127.0.0.1:5173",
+    "https://research-agent.vercel.app",
+    "https://research-agent-*.vercel.app",
 ]
 
 app.add_middleware(

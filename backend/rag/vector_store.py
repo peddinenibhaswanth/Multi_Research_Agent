@@ -4,7 +4,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 
 from config import settings
-from .embeddings import embedding_model
+from .embeddings import get_embedding_model
 
 
 class ScrapedSource(TypedDict):
@@ -30,7 +30,7 @@ def get_vector_store(collection_name: str) -> Chroma:
     vector_store = Chroma(
         collection_name=collection_name,
         persist_directory=settings.CHROMA_PERSIST_DIR,
-        embedding_function=embedding_model,
+        embedding_function=get_embedding_model(),
     )
     return vector_store
 

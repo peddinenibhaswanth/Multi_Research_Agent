@@ -3,7 +3,7 @@ from langchain.retrievers.document_compressors import DocumentCompressorPipeline
 from langchain_community.document_transformers import EmbeddingsRedundantFilter
 from langchain_community.retrievers import BM25Retriever
 from langchain.retrievers import EnsembleRetriever
-from .embeddings import embedding_model
+from .embeddings import get_embedding_model
 from .vector_store import create_source_documents, get_vector_store, split_source_documents
 
 
@@ -45,7 +45,7 @@ def get_retriever(collection_name: str, documents: list):
 
     # 4. Initialize a compressor pipeline for post-processing
     # This helps to filter out redundant documents from the retrieved set.
-    redundant_filter = EmbeddingsRedundantFilter(embeddings=embedding_model)
+    redundant_filter = EmbeddingsRedundantFilter(embeddings=get_embedding_model())
     pipeline_compressor = DocumentCompressorPipeline(
         transformers=[redundant_filter]
     )
