@@ -46,7 +46,8 @@ def get_agent_executor():
         tools=research_tools,
         verbose=True,  # Set to True to see the agent's thought process
         handle_parsing_errors=True,  # Gracefully handle any LLM output parsing errors
-        max_iterations=10,  # Add a safeguard to prevent infinite loops
+        max_iterations=6,  # Add a safeguard to prevent infinite loops
+        max_execution_time=60,
         return_intermediate_steps=True
     )
     print("--- Agent executor created successfully ---")

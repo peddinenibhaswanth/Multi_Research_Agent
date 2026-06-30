@@ -1,16 +1,15 @@
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from config import settings
 
-# Don't load at import time — load only when first needed
 _embedding_model = None
 
-def get_embedding_model() -> HuggingFaceEmbeddings:
+def get_embedding_model():
     global _embedding_model
     if _embedding_model is None:
-        print("--- Loading embedding model (first time only) ---")
-        _embedding_model = HuggingFaceEmbeddings(
-            model_name=settings.EMBEDDING_MODEL_NAME,
-            encode_kwargs={"normalize_embeddings": True},
+        print("--- Initializing Google embedding model ---")
+        _embedding_model = GoogleGenerativeAIEmbeddings(
+            model="models/gemini-embedding-001",  
+            google_api_key=settings.GOOGLE_API_KEY
         )
-        print("--- Embedding model loaded successfully ---")
+        print("--- Google embedding model ready ---")
     return _embedding_model

@@ -76,7 +76,11 @@ async def research_endpoint(request: ResearchRequest):
 
             # 3. Add texts to vector store
             print("step3")
-            add_texts_to_vector_store(texts, collection_name)
+            # add_texts_to_vector_store(texts, collection_name)
+            try:
+                add_texts_to_vector_store(texts, collection_name)
+            except ValueError as ve:
+                return None, str(ve)
 
             # 4. Create the report generation chain
             print("step4")

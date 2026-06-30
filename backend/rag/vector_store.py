@@ -83,6 +83,12 @@ def add_texts_to_vector_store(texts: list[ScrapedSource], collection_name: str) 
     chunked_documents = split_source_documents(documents)
     
     print(f"--- Created {len(chunked_documents)} chunks ---")
+    
+    if not chunked_documents:
+        raise ValueError(
+            "No usable content could be extracted from the scraped sources. "
+            "Try a different research topic or check if sources are accessible."
+        )
 
     # Initialize the vector store
     vector_store = get_vector_store(collection_name)
