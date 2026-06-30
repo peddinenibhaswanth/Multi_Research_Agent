@@ -13,3 +13,4 @@ pydantic
 python-dotenv
 lxml
 nest_asyncio
+rank_bm25
